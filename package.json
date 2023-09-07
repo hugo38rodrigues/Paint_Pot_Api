@@ -1,0 +1,23 @@
+{
+  "name": "paint_pot_api",
+  "version": "1.0.0",
+  "description": "Api back end for app paint_pot",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hugo38rodrigues/Paint_Pot_Api.git"
+  },
+  "author": "hugo38rodrigues",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hugo38rodrigues/Paint_Pot_Api/issues"
+  },
+  "homepage": "https://github.com/hugo38rodrigues/Paint_Pot_Api#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql": "^2.18.1"
+  }
+}
