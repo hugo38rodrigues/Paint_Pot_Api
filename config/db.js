@@ -1,9 +1,12 @@
-const mysql      = require('mysql');
-const connectionDB = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : '1234567890',
-    database : 'Paint-pot'
+const Sequelize = require('sequelize')
+const dotenv = require('dotenv')
+dotenv.config()
+
+module.exports = new Sequelize("", process.env.MYSQL_USER, process.env.MYSQL_ROOT_PASSWORD, { 
+    dialect: "mysql",    host: "localhost" 
 });
-module.exports = connectionDB
+
+
+
+
 
