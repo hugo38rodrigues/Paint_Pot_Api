@@ -1,20 +1,20 @@
-const express = require('express')
+import express, { json, urlencoded } from 'express'
+import { DB } from './config/DB.js'
+import { router as paintPotsRoutes } from './routes/paint-pots.routes.js'
+import { Pot } from './model/pots.model.js'
+
 const app = express()
-const dotenv = require("dotenv").config()
-const connectionDB = require('./config/db')
-
 const port = 3000
+const db = new DB()
 
-//Middleware qui permet de traiter les données de la request
-app.use(express.json())
-app.use(express.urlencoded({ extended: false}))
+// Middleware qui permet de traiter les données de la request
+app.use(json())
+app.use(urlencoded({ extended: false }))
 
-app.use("/paint-pots", require("./routes/paint-pots.routes"))
-connectionDB.sync().then((console.log("connexion bdd"))).catch(error => console.log(error))
-
-
-
-// Launch Server
-app.listen(port, () => {
-    console.log(`Le serveur à démarré sur le port:  ${port}`)
+// Utilisation des routes
+app.use('/paint-pots', paintPotsRoutes)
+db.initializeDatabase().then(() => {
+  app.listen(port, () => {
+    console.log(`Le serveur a démarré sur le port: ${port}`)
+  })
 })
