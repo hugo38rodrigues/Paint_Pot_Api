@@ -2,11 +2,15 @@ import {sequelize} from "./sequelize.js"
 import {Pot} from "../model/pots.model.js";
 import {ModelPlaneModel} from "../model/model-plane.model.js";
 
+
 export class DB {
   async initializeDatabase() {
     try {
       await sequelize.authenticate()
       console.log('Connection has been established successfully.')
+      ModelPlaneModel.hasMany(Pot, {
+        foreignKey: 'modelPlaneId'
+      })
       // Synchronisation des modèles avec la base de données
       try {
         // Utilisez { force: true } si vous souhaitez réinitialiser la base de données à chaque démarrage

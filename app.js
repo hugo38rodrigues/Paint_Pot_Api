@@ -11,8 +11,8 @@ app.use(json())
 app.use(urlencoded({ extended: false }))
 
 // Utilisation des routes
-app.use('/paint-pots', paintPotsRoutes)
 db.initializeDatabase().then(() => {
+  app.use('/paint-pots', paintPotsRoutes)
   app.listen(port, () => {
     console.log(`Le serveur a démarré sur le port: ${port}`)
   })
