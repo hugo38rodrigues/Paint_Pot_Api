@@ -7,12 +7,21 @@ export class DB {
     try {
       await sequelize.authenticate()
       console.log('Connection has been established successfully.')
-      // Synchronisation du modèle avec la base de données
-      // Utilisez { force: true } si vous souhaitez réinitialiser la base de données à chaque démarrage
-      await Pot.sync({force: true})
-      console.log("création de la table pot")
-      await ModelPlaneModel.sync({force: true})
-      console.log("création de la table Maquette")
+      // Synchronisation des modèles avec la base de données
+      try {
+        // Utilisez { force: true } si vous souhaitez réinitialiser la base de données à chaque démarrage
+        await Pot.sync({force: true})
+        console.log("création de la table Pot")
+      } catch (error) {
+        console.log(`Erreur lors de la création de la table Pot: ${error}`)
+      }
+
+      try {
+        await ModelPlaneModel.sync({force: true})
+        console.log("création de la table Maquette")
+      } catch (error) {
+      console.log(`Erreur lors de la création de la table Maquette: ${error}`)
+      }
 
       console.log('Database synchronized successfully.')
     } catch (error) {

@@ -3,7 +3,7 @@ import { DB } from './config/DB.js'
 import { router as paintPotsRoutes } from './routes/paint-pots.routes.js'
 
 const app = express()
-const port = 3000
+const port = 5000
 const db = new DB()
 
 // Middleware qui permet de traiter les données de la request
