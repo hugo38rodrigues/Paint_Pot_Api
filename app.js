@@ -1,7 +1,6 @@
 import express, { json, urlencoded } from 'express'
 import { DB } from './config/DB.js'
 import { router as paintPotsRoutes } from './routes/paint-pots.routes.js'
-import { Pot } from './model/pots.model.js'
 
 const app = express()
 const port = 3000

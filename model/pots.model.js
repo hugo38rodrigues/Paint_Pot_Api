@@ -1,8 +1,8 @@
 /* eslint-disable import/no-cycle */
 import { Sequelize } from 'sequelize'
-import { sequelize } from '../config/DB.js'
+import { sequelize } from '../config/sequelize.js'
 
-export const Pot = sequelize.define('Pots', {
+export const Pot = sequelize.define('pots', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -10,11 +10,14 @@ export const Pot = sequelize.define('Pots', {
   },
   name: {
     type: Sequelize.STRING,
+    allowNull: false,
   },
   brand: {
     type: Sequelize.STRING,
+    allowNull: false,
   },
-  code: {
+  ref_code: {
     type: Sequelize.INTEGER,
+    allowNull: false,
   },
 })
