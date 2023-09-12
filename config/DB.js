@@ -8,9 +8,6 @@ export class DB {
     try {
       await sequelize.authenticate()
       console.log('Connection has been established successfully.')
-      ModelPlaneModel.hasMany(Pot, {
-        foreignKey: 'modelPlaneId'
-      })
       // Synchronisation des modèles avec la base de données
       try {
         // Utilisez { force: true } si vous souhaitez réinitialiser la base de données à chaque démarrage
@@ -26,6 +23,14 @@ export class DB {
       } catch (error) {
       console.log(`Erreur lors de la création de la table Maquette: ${error}`)
       }
+      await Pot.bulkCreate([
+        {color: 'black', brand: 'Italery', ref_code: 8585},
+        {color: 'yellow', brand: 'Italery', ref_code: 8688},
+      ])
+      await ModelPlaneModel.bulkCreate([
+        {name: 'avion de chasse 1', pot_list: 1, ref_code: 8585, image: 'toto'},
+      ])
+
 
       console.log('Database synchronized successfully.')
     } catch (error) {

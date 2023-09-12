@@ -1,5 +1,6 @@
 import { sequelize } from "../config/sequelize.js";
 import { DataTypes } from "sequelize";
+import {Pot} from "./pots.model.js";
 
 export const ModelPlaneModel = sequelize.define('model_plane', {
     id: {
@@ -12,7 +13,7 @@ export const ModelPlaneModel = sequelize.define('model_plane', {
         allowNull: false,
     },
     pot_list: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
     ref_code: {
@@ -23,4 +24,8 @@ export const ModelPlaneModel = sequelize.define('model_plane', {
         type: DataTypes.STRING,
         allowNull: false
     }
+})
+
+ModelPlaneModel.hasMany(Pot, {
+    foreignKey: 'modelPlaneID'
 })

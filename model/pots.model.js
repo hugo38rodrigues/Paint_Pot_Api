@@ -7,7 +7,7 @@ export const Pot = sequelize.define('pots', {
     primaryKey: true,
     autoIncrement: true,
   },
-  name: {
+  color: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -19,4 +19,10 @@ export const Pot = sequelize.define('pots', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  modelPlaneID: {
+    type: DataTypes.INTEGER,
+    foreignKey: {
+      modelPlaneModel: modelPlaneId
+    },
+  }
 })
