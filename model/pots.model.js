@@ -19,10 +19,4 @@ export const Pot = sequelize.define('pots', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  modelPlaneID: {
-    type: DataTypes.INTEGER,
-    foreignKey: {
-      modelPlaneModel: modelPlaneId
-    },
-  }
 })

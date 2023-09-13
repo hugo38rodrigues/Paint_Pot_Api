@@ -12,10 +12,6 @@ export const ModelPlaneModel = sequelize.define('model_plane', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    pot_list: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
     ref_code: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -25,7 +21,5 @@ export const ModelPlaneModel = sequelize.define('model_plane', {
         allowNull: false
     }
 })
-
-ModelPlaneModel.hasMany(Pot, {
-    foreignKey: 'modelPlaneID'
-})
+ModelPlaneModel.belongsTo(Pot, { foreignKey: 'id_pot' });
+Pot.hasMany(ModelPlaneModel, { foreignKey: 'id_pot' })

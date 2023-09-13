@@ -23,12 +23,17 @@ export class DB {
       } catch (error) {
       console.log(`Erreur lors de la création de la table Maquette: ${error}`)
       }
+
+      // add user id foreign key to all projects
+      ModelPlaneModel.belongsTo(Pot, { foreignKey: 'id_pot' });
+      Pot.hasMany(ModelPlaneModel, { foreignKey: 'id_pot' })
+
       await Pot.bulkCreate([
         {color: 'black', brand: 'Italery', ref_code: 8585},
         {color: 'yellow', brand: 'Italery', ref_code: 8688},
       ])
       await ModelPlaneModel.bulkCreate([
-        {name: 'avion de chasse 1', pot_list: 1, ref_code: 8585, image: 'toto'},
+        {name: 'avion de chasse 1', ref_code: 8585, image: 'toto'},
       ])
 
 
