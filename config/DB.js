@@ -33,7 +33,7 @@ export class DB {
         {color: 'yellow', brand: 'Italery', ref_code: 8688},
       ])
       await ModelPlaneModel.bulkCreate([
-        {name: 'avion de chasse 1', ref_code: 8585, image: 'toto'},
+        {name: 'avion de chasse 1', ref_code: 8585, image: 'toto', id_pot: [1,2]},
       ])
 
 
