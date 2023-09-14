@@ -19,6 +19,10 @@ export const ModelPlaneModel = sequelize.define('model_plane', {
     image: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    id_pot: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     }
 })
 ModelPlaneModel.belongsTo(Pot, { foreignKey: 'id_pot' });
