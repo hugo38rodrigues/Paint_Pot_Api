@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize'
 import { sequelize } from '../config/sequelize.js'
+import {PotModelPlane} from "./jonction.model.js";
 
 export const Pot = sequelize.define('pots', {
   id: {
@@ -18,5 +19,6 @@ export const Pot = sequelize.define('pots', {
   ref_code: {
     type: DataTypes.INTEGER,
     allowNull: false,
-  },
+  }
 })
+

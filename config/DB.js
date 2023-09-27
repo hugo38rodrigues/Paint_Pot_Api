@@ -1,6 +1,7 @@
 import {sequelize} from "./sequelize.js"
 import {Pot} from "../model/pots.model.js";
 import {ModelPlaneModel} from "../model/model-plane.model.js";
+import {PotModelPlane} from "../model/jonction.model.js";
 
 
 export class DB {
@@ -23,17 +24,19 @@ export class DB {
       } catch (error) {
       console.log(`Erreur lors de la création de la table Maquette: ${error}`)
       }
-
-      // add user id foreign key to all projects
-      ModelPlaneModel.belongsTo(Pot, { foreignKey: 'id_pot' });
-      Pot.hasMany(ModelPlaneModel, { foreignKey: 'id_pot' })
+      try {
+        await PotModelPlane.sync({force: true})
+        console.log("création de la table jonction")
+      } catch (error) {
+      console.log(`Erreur lors de la création de la table table jonction: ${error}`)
+      }
 
       await Pot.bulkCreate([
         {color: 'black', brand: 'Italery', ref_code: 8585},
-        {color: 'yellow', brand: 'Italery', ref_code: 8688},
+        {color: 'yellow', brand: 'Italery', ref_code: 8688 },
       ])
       await ModelPlaneModel.bulkCreate([
-        {name: 'avion de chasse 1', ref_code: 8585, image: 'toto', id_pot: [1,2]},
+        {name: 'avion de chasse 1', ref_code: 8585, image: 'toto',},
       ])
 
 
