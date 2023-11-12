@@ -1,22 +1,23 @@
-import { sequelize } from "../config/sequelize.js";
-import { DataTypes } from "sequelize";
-
-export const ModelPlaneModel = sequelize.define('model_plane', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-    },
+const mongoose = require('mongoose')
+const modelPlaneSchema = mongoose.Schema(
+  {
     name: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: String,
+      require: true
     },
     ref_code: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+      type: Number,
+      require: true,
     },
     image: {
-        type: DataTypes.STRING,
-        allowNull: false
-    }
-})
+      type: String,
+      require: true,
+    },
+    list_pots: {
+      type: Array,
+      require: true
+    },
+  }
+)
+
+module.exports = mongoose.model('modelPlane', modelPlaneSchema)

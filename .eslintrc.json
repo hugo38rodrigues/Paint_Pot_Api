@@ -1,18 +1,15 @@
 {
-    "extends": ["airbnb-base"],
-    "env": {
-      "node": true,
-      "es6": true,
-      "browser": true
-    },
-    "rules": {
-      "no-unused-vars":"warn",
-      "no-console":"off",
-      "semi":["error", "never"],
-      "class-methods-use-this":"off",
-      "import/prefer-default-export": "off",
-      "no-useless-constructor":"off",
-      "import/extensions": "off",
-      "max-len":"off"
-    }
+  "parser": "babel-eslint",
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "extends": ["eslint:recommended"],
+  "parserOptions": {
+    "ecmaVersion": 2023
+  },
+  "rules": {
+    "quotes": ["error", "single"], // Utiliser uniquement les simples quotes
+    "brace-style": ["error", "1tbs", { "allowSingleLine": true }] // Espace entre les accolades
   }
+}

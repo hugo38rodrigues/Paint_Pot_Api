@@ -1,19 +1,16 @@
-import { Router } from 'express'
+const Router = require('express')
+const { setPots, getPots, editPot, deletedPot, getPot } = require('../controllers/pots.controller')
 
-export const router = Router()
+const router = Router()
 
-router.get('/', (req, res) => {
-  res.json({ message: 'Voici mes données' })
-})
+router.get('/', getPots)
 
-router.post('/', (req, res) => {
-  res.json({ message: req.body.message })
-})
+router.get('/:id', getPot)
 
-router.put('/:id', (req, res) => {
-  res.json({ messageId: req.params.id })
-})
+router.post('/', setPots)
 
-router.delete('/:id', (req, res) => {
-  res.json({ message: `Post supprimé id ${req.params.id}` })
-})
+router.put('/:id', editPot)
+
+router.delete('/:id', deletedPot)
+
+module.exports = router

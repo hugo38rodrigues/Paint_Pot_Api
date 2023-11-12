@@ -1,24 +1,25 @@
-import { DataTypes } from 'sequelize'
-import { sequelize } from '../config/sequelize.js'
-import {PotModelPlane} from "./jonction.model.js";
 
-export const Pot = sequelize.define('pots', {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
+const mongoose = require('mongoose')
+
+const potSchema = mongoose.Schema(
+  {
+    color: {
+      type: String,
+      require: true
+    },
+    brand: {
+      type: String,
+      require: true
+    },
+    ref_code: {
+      type: Number,
+      require: true
+    }
   },
-  color: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  brand: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  ref_code: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
+  {
+    timestamps: true
   }
-})
+)
+
+module.exports = mongoose.model('pot', potSchema)
 
