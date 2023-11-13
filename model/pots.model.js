@@ -14,6 +14,14 @@ const potSchema = mongoose.Schema(
     ref_code: {
       type: Number,
       require: true
+    },
+    type: {
+      type: String,
+      require: true
+    },
+    volume: {
+      type: Number,
+      require: true
     }
   },
   {
